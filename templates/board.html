@@ -5,21 +5,23 @@
   </title>
   <style type="text/css">
      body{
-  		background-color:#222222;
+  		background-color:#111111;
 			color:white;
-			padding-left:50px;
-		}
-		h1{
+	padding-left:50px;
+     font-family:Arial;
+	}
+     h1{
 			font-size:30px;
 			color:cyan;
+     }
 
-		}
-	}
     table{
-      border-color:white;
+      border-color:cyan;
+     border-style:solid;
+     border-width:1px;
     }
     canvas{
-    	border-color:white;
+    	border-color:cyan;
     	border-width:3px;
     	border-style:solid;
     }
@@ -27,13 +29,16 @@
 </head>
 <body>
 <table width="100%">
+<h1>StudyBoard</h1>
+<br>
   <tr>
     <td>Homepage</td>
     <td>Whiteboard</td>
     <td>Logout</td>
   <tr>
 </table>
-  Hello, {{name}}. 
+<br>
+  Hello, {{name}}. <br><br>
   <canvas height=300 width=570>
   <!-- Dexter can make his canvas here -->
   </canvas>
