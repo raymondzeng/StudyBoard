@@ -9,6 +9,7 @@ background-color:gray;
 
 </style>
 <script type="text/javascript">
+var saved_image = "";
 var canvas,ctx,flag=false,prevX=0,currX=0,prevY=0,currY=0,dot_flag=false;
 var x="black",y=2;
 function init()
@@ -51,20 +52,21 @@ function draw()
 }
 function erase()
 {
-    var m=confirm("Want to clear?");
-    if(m)
-    {
-        ctx.clearRect(0,0,w,h);
-        document.getElementById("canvasimg").style.display="none";
-    }
-}
+ctx.clearRect(0,0,w,h);
+ }
 function save()
 {
-    document.getElementById("canvasimg").style.border="2px solid";
-    var dataURL = canvas.toDataURL();
-    document.getElementById("canvasimg").src = dataURL;
-    document.getElementById("canvasimg").style.display="inline";
+var dataUrl = canvas.toDataURL();
+saved_image = dataUrl;
  }
+function load(){
+var img = new Image;
+img.onload = function(){
+erase();
+ctx.drawImage(img,0,0);
+};
+img.src = saved_image;
+}
 function findxy(res,e)
 {
 
@@ -118,4 +120,5 @@ function findxy(res,e)
         <div style="position:absolute;top:25%;left:75%;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
     <input type="button" value="save" id="btn" size="30" onclick="save()"style="position:absolute;top:55%;left:10%;">
     <input type="button" value="clear" id="clr" size="23" onclick="erase()"style="position:absolute;top:55%;left:15%;">
+     <input type="button" value="load" id="ld" size="23" onclick="load()"style="position:absolute;top:55%;left:20%;">
 </body>
