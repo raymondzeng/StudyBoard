@@ -1,29 +1,47 @@
-<!DOCTYPE HTML>
-<head>
-  <style type="text/css">
-     body{
-			background-color:#222222;
-			color:white;
-			padding-left:50px;
-		}
-		h1{
-			font-size:30px;
-			color:cyan;
-
-		}
-    table{
+<!DOCTYPE html> 
+<html xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <style type="text/css">
+      canvas{
+      background-color:gray;
+      }
+      body{
+      background-color:#222222;
+      color:white;
+      padding-left:50px;
+      }
+      h1{
+      font-size:30px;
+      color:cyan;
+      }
+      a{
+      color:white;
+      }
+	 table{
       border-color:white;
+     border-style:dashed;
+     border-width:1px;
     }
-  </style>
-</head>
-<body>
-<table width="100%">
-  <tr>
-    <td>Homepage</td>
-    <td>Whiteboard</td>
-    <td>Logout</td>
-  <tr>
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="static/scripts.js"></script>
+  </head>
+  <body onload="init()">
+	   <div id="fb-root"></div>
+    <h1>StudyBoard</h1>
+	<table  width=100%>
+	<tr>
+		<td width=25%><a href="index.html">Home</a></td>
+		<td width=25%>Whiteboard</td>
+		<td width=25%>Credits</td>
+	</tr>
+	<table width="100%">
 </table>
-  Hello, {{name}}. 
-  
-</body>
+  <p>Welcome to <font color=cyan>StudyBoard</font>, a study aid developed by Stuyvesant High School students.</p>
+  <p><font color=cyan>StudyBoard has:</font></p>
+  <ul>
+	<li>A Whiteboard</li>
+	<li>StudySheets</li>
+  </ul>
+  </body>
+</html>
