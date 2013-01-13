@@ -17,15 +17,27 @@
       a{
       color:white;
       }
+	 table{
+      border-color:white;
+     border-style:dashed;
+     border-width:1px;
+    }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="static/scripts.js"></script>
   </head>
   <body onload="init()">
-    <div id="fb-root"></div>
+	   <div id="fb-root"></div>
     <canvas id="can" width="960"height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
-    <h1>StoryBoard</h1>
-    <div style="position:absolute;left:1000px;" id="fb stuff">
+    <h1>StudyBoard</h1>
+	<table  width=100%>
+	<tr>
+		<td width=25%><a href="index.html">Home</a></td>
+		<td width=25%>Whiteboard</td>
+		<td width=25%>Credits</td>
+	</tr>
+	</table>
+    <div style="position:absolute;right:100px;" id="fb stuff">
       <button id="fb-auth">Login</button>
       <br />
       <div id="user-info"></div>
