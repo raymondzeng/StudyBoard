@@ -4,9 +4,16 @@
     canvas{
     background-color:gray;
     }
-    body{
-    background-color:gray;
-    }
+		body{
+			background-color:#222222;
+			color:white;
+			padding-left:50px;
+		}
+		h1{
+			font-size:30px;
+			color:white;
+			
+		}
     
   </style>
   <script type="text/javascript">
@@ -193,8 +200,15 @@
       }
     </script>
    
-    <canvas id="can" width="576"height="324" style="position:absolute;top:10%;left:10%;border:2px solid;"></canvas>
-    
+    <canvas id="can" width="960"height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
+    <h1>StoryBoard</h1>
+	<div id="fb stuff">
+      <button id="fb-auth">Login</button>
+      <br />
+      <div id="user-info"></div>
+      <br />
+      <div id="debug"></div>
+    </div>
     <div style="position:absolute;top:12%;left:73%;">Choose Color</div>
     <div style="position:absolute;top:15%;left:75%;width:30px;height:30px;background:green;" id="green" onclick="color(this)"></div>
     <div style="position:absolute;top:15%;left:77%;width:30px;height:30px;background:blue;" id="blue" onclick="color(this)"></div>
@@ -204,15 +218,10 @@
     <div style="position:absolute;top:19%;left:79%;width:30px;height:30px;background:black;" id="black" onclick="color(this)"></div>
     <div style="position:absolute;top:23%;left:73%;">Eraser</div>
     <div style="position:absolute;top:25%;left:75%;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
-    <input type="button" value="save" id="btn" size="30" onclick="save()"style="position:absolute;top:55%;left:10%;">
-    <input type="button" value="clear" id="clr" size="23" onclick="erase()"style="position:absolute;top:55%;left:15%;">
-    <input type="button" value="load" id="ld" size="23" onclick="load()"style="position:absolute;top:55%;left:20%;">
-    <div id="fb stuff" style="position: absolute; top: 70%;">
-      <button id="fb-auth">Login</button>
-      <br />
-      <div id="user-info"></div>
-      <br />
-      <div id="debug"></div>
-    </div>
+    <input type="button" value="save" id="btn" size="30" onclick="save()"style="position:absolute;top:680px;left:25px;">
+    <input type="button" value="clear" id="clr" size="23" onclick="erase()"style="position:absolute;top:680px;left:80px;">
+    <input type="button" value="load" id="ld" size="23" onclick="load()"style="position:absolute;top:680px;left:135px">
+	<p style="position:absolute;top:700px;left:25px;">Credits to (credit) for the whiteboard code</p>
+
   </body>
 </html>
