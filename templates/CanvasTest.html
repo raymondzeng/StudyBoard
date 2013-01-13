@@ -1,31 +1,32 @@
- <html>
-<style type="text/css">
-canvas{
-background-color:gray;
-}
-body{
-background-color:gray;
-}
-
-</style>
-<script type="text/javascript">
-var saved_image = "";
-var canvas,ctx,flag=false,prevX=0,currX=0,prevY=0,currY=0,dot_flag=false;
-var x="black",y=2;
-function init()
-{
+<!DOCTYPE html> 
+<html xmlns:fb="https://www.facebook.com/2008/fbml">
+  <style type="text/css">
+    canvas{
+    background-color:gray;
+    }
+    body{
+    background-color:gray;
+    }
+    
+  </style>
+  <script type="text/javascript">
+    var saved_image = "";
+    var canvas,ctx,flag=false,prevX=0,currX=0,prevY=0,currY=0,dot_flag=false;
+    var x="black",y=2;
+    function init()
+    {
     canvas=document.getElementById('can');
     ctx=canvas.getContext("2d");
     w=canvas.width;
     h=canvas.height;
-
+    
     canvas.addEventListener("mousemove",function(e){ findxy('move',e)  },false);
     canvas.addEventListener("mousedown",function(e){ findxy('down',e)  },false);
     canvas.addEventListener("mouseup",function(e){ findxy('up',e)  },false);
     canvas.addEventListener("mouseout",function(e){ findxy('out',e)  },false);
-} 
-function color(obj)
-{
+    } 
+    function color(obj)
+    {
     switch(obj.id)
     {
         case "green" : x="green";break;
@@ -39,9 +40,9 @@ function color(obj)
     if(x=="white")y=20;
     else y=2;
 
-}
-function draw()
-{
+    }
+    function draw()
+    {
     ctx.beginPath();
     ctx.moveTo(prevX,prevY);
     ctx.lineTo(currX,currY);
@@ -49,26 +50,26 @@ function draw()
     ctx.lineWidth=y;
     ctx.stroke();
     ctx.closePath();
-}
-function erase()
-{
-ctx.clearRect(0,0,w,h);
- }
-function save()
-{
-var dataUrl = canvas.toDataURL();
-saved_image = dataUrl;
- }
-function load(){
-var img = new Image;
-img.onload = function(){
-erase();
-ctx.drawImage(img,0,0);
-};
-img.src = saved_image;
-}
-function findxy(res,e)
-{
+    }
+    function erase()
+    {
+    ctx.clearRect(0,0,w,h);
+    }
+    function save()
+    {
+    var dataUrl = canvas.toDataURL();
+    saved_image = dataUrl;
+    }
+    function load(){
+    var img = new Image;
+    img.onload = function(){
+    erase();
+    ctx.drawImage(img,0,0);
+    };
+    img.src = saved_image;
+    }
+    function findxy(res,e)
+    {
 
     if(res=='down')
                 {   prevX=currX;prevY=currY;
@@ -102,23 +103,116 @@ function findxy(res,e)
             draw();
                 }
             }
-}
+    }
+    
+  </script>
 
-</script>
+  <body onload="init()">
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+      /*FB Login gives us access to 
+      fb id
+      name
+      first_name
+      last_name
+      link
+      username
+      gender
+      locale
+      Other public information
+      email
+      about user
+      */
 
-<body onload="init()">
-        <canvas id="can" width="576"height="324" style="position:absolute;top:10%;left:10%;border:2px solid;"></canvas>
-
-        <div style="position:absolute;top:12%;left:73%;">Choose Color</div>
-        <div style="position:absolute;top:15%;left:75%;width:30px;height:30px;background:green;" id="green" onclick="color(this)"></div>
-        <div style="position:absolute;top:15%;left:77%;width:30px;height:30px;background:blue;" id="blue" onclick="color(this)"></div>
-        <div style="position:absolute;top:15%;left:79%;width:30px;height:30px;background:red;" id="red" onclick="color(this)"></div>
-        <div style="position:absolute;top:19%;left:75%;width:30px;height:30px;background:yellow;" id="yellow" onclick="color(this)"></div>
-        <div style="position:absolute;top:19%;left:77%;width:30px;height:30px;background:orange;" id="orange" onclick="color(this)"></div>
-        <div style="position:absolute;top:19%;left:79%;width:30px;height:30px;background:black;" id="black" onclick="color(this)"></div>
-        <div style="position:absolute;top:23%;left:73%;">Eraser</div>
-        <div style="position:absolute;top:25%;left:75%;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
+      var button;
+      var userInfo;
+      
+      window.fbAsyncInit = function() {
+      FB.init({ appId: '415808421820964', 
+      status: true, 
+      cookie: true,
+      xfbml: true,
+      oauth: true});
+      
+      function updateButton(response) {
+      button = document.getElementById('fb-auth');
+      userInfo = document.getElementById('user-info');
+      
+      if (response.authResponse) {
+      //user is already logged in and connected
+      FB.api('/me', function(info) {
+      login(response, info);
+      });
+      
+      button.onclick = function() {
+      FB.logout(function(response) {
+      logout(response);
+      });
+      };
+      } else {
+      //user is not connected to your app or logged out
+      button.innerHTML = 'Login';
+      button.onclick = function() {
+      FB.login(function(response) {
+      if (response.authResponse) {
+      FB.api('/me', function(info) {
+      login(response, info);
+      });	   
+      } else {
+      //user cancelled login or did not grant authorization
+      }
+      }, {scope:'email,user_about_me'});  	
+      }
+      }
+      }
+      
+      // run once with current status and whenever the status changes
+      FB.getLoginStatus(updateButton);
+      FB.Event.subscribe('auth.statusChange', updateButton);	
+      };
+      (function() {
+      var e = document.createElement('script'); e.async = true;
+      e.src = 'http://connect.facebook.net/en_US/all.js';
+      document.getElementById('fb-root').appendChild(e);
+      }());
+      
+      
+      function login(response, info){
+      if (response.authResponse) {
+      var accessToken = response.authResponse.accessToken;
+      userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name;
+      button.innerHTML = 'Logout';
+      document.getElementById('other').style.display = "block";
+      }
+      }
+      
+      function logout(response){
+      userInfo.innerHTML = "";
+      document.getElementById('debug').innerHTML = "";
+      document.getElementById('other').style.display = "none";
+      }
+    </script>
+   
+    <canvas id="can" width="576"height="324" style="position:absolute;top:10%;left:10%;border:2px solid;"></canvas>
+    
+    <div style="position:absolute;top:12%;left:73%;">Choose Color</div>
+    <div style="position:absolute;top:15%;left:75%;width:30px;height:30px;background:green;" id="green" onclick="color(this)"></div>
+    <div style="position:absolute;top:15%;left:77%;width:30px;height:30px;background:blue;" id="blue" onclick="color(this)"></div>
+    <div style="position:absolute;top:15%;left:79%;width:30px;height:30px;background:red;" id="red" onclick="color(this)"></div>
+    <div style="position:absolute;top:19%;left:75%;width:30px;height:30px;background:yellow;" id="yellow" onclick="color(this)"></div>
+    <div style="position:absolute;top:19%;left:77%;width:30px;height:30px;background:orange;" id="orange" onclick="color(this)"></div>
+    <div style="position:absolute;top:19%;left:79%;width:30px;height:30px;background:black;" id="black" onclick="color(this)"></div>
+    <div style="position:absolute;top:23%;left:73%;">Eraser</div>
+    <div style="position:absolute;top:25%;left:75%;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
     <input type="button" value="save" id="btn" size="30" onclick="save()"style="position:absolute;top:55%;left:10%;">
     <input type="button" value="clear" id="clr" size="23" onclick="erase()"style="position:absolute;top:55%;left:15%;">
-     <input type="button" value="load" id="ld" size="23" onclick="load()"style="position:absolute;top:55%;left:20%;">
-</body>
+    <input type="button" value="load" id="ld" size="23" onclick="load()"style="position:absolute;top:55%;left:20%;">
+    <div id="fb stuff" style="position: absolute; top: 70%;">
+      <button id="fb-auth">Login</button>
+      <br />
+      <div id="user-info"></div>
+      <br />
+      <div id="debug"></div>
+    </div>
+  </body>
+</html>
