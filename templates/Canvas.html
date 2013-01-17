@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
     <style type="text/css">
@@ -17,7 +17,7 @@
       a{
       color:white;
       }
-	 table{
+table{
       border-color:white;
      border-style:dashed;
      border-width:1px;
@@ -27,16 +27,32 @@
     <script type="text/javascript" src="static/scripts.js"></script>
   </head>
   <body onload="init()">
-	   <div id="fb-root"></div>
+    <script type="text/javascript">
+      window.Meebo||function(c){function p(){return["<",i,' onload="var d=',g,";d.getElementsByTagName('head')[0].",
+j,"(d.",h,"('script')).",k,"='//cim.meebo.com/cim?iv=",a.v,"&",q,"=",c[q],c[l]?
+"&"+l+"="+c[l]:"",c[e]?"&"+e+"="+c[e]:"","'\"></",i,">"].join("")}var f=window,
+      a=f.Meebo=f.Meebo||function(){(a._=a._||[]).push(arguments)},d=document,i="body",
+      m=d[i],r;if(!m){r=arguments.callee;return setTimeout(function(){r(c)},100)}a.$=
+      {0:+new Date};a.T=function(u){a.$[u]=new Date-a.$[0]};a.v=5;var j="appendChild",
+      h="createElement",k="src",l="lang",q="network",e="domain",n=d[h]("div"),v=n[j](d[h]("m")),
+      b=d[h]("iframe"),g="document",o,s=function(){a.T("load");a("load")};f.addEventListener?
+      f.addEventListener("load",s,false):f.attachEvent("onload",s);n.style.display="none";
+      m.insertBefore(n,m.firstChild).id="meebo";b.frameBorder="0";b.name=b.id="meebo-iframe";
+      b.allowTransparency="true";v[j](b);try{b.contentWindow[g].open()}catch(w){c[e]=
+      d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{var t=
+      b.contentWindow[g];t.write(p());t.close()}catch(x){b[k]=o+'d.write("'+p().replace(/"/g,
+      '\\"')+'");d.close();'}a.T(1)}({network:"studyboard_do55jo"});
+    </script>
+    <div id="fb-root"></div>
     <canvas id="can" width="960"height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
     <h1>StudyBoard</h1>
-	<table  width=100%>
-	<tr>
-		<td width=25%><a href="index.html">Home</a></td>
-		<td width=25%>Whiteboard</td>
-		<td width=25%>Credits</td>
-	</tr>
-	</table>
+<table width=100%>
+<tr>
+<td width=25%><a href="index.html">Home</a></td>
+<td width=25%>Whiteboard</td>
+<td width=25%>Credits</td>
+</tr>
+</table>
     <div style="position:absolute;right:100px;" id="fb stuff">
       <button id="fb-auth">Login</button>
       <br />
@@ -57,5 +73,8 @@
     <input type="button" value="clear" id="clr" size="23" onclick="erase()"style="position:absolute;top:680px;left:80px;">
     <input type="button" value="load" id="ld" size="23" onclick="load()"style="position:absolute;top:680px;left:135px">
     <p style="position:absolute;top:700px;left:25px;">Credits to <a href="http://stackoverflow.com/questions/2368784/draw-by-mouse-with-html5-canvas">Stackoverflow</a> for the whiteboard code</p>
+    <script type="text/javascript">
+      Meebo("domReady");
+    </script>
   </body>
 </html>
