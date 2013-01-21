@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
-<head>
-<style type="text/css">
-canvas {
+  <head>
+    <style type="text/css">
+    canvas {
 	background-color:white;
 	box-shadow:4px 4px 8px cyan;
 }
@@ -24,38 +24,49 @@ table {
 	border-style:dashed;
 	border-width: 1px;
 }
-</style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="static/scripts.js"></script>
-</head>
-<body onload="init()">
-<div id="fb-root">
-</div>
-<h1>StudyBoard</h1>
-<table width=100%>
-<tr>
-	<td width=25%>
-		<a href="home.html">Home</a>
-	</td>
-	<td width=25%>
-		<a href="sheets.html">Studysheets</a>
-	</td>
-	<td width=25%>
-		<a href="whiteboard.html">Whiteboard</a>
-	</td>
-	<td width=25%>
-		<a href="credits.html">Credits</a>
-	</td>
-</tr>
-<table width="100%">
-</table>
-<p>
+#user_name {
+        position: absolute;
+        top: 0px;
+        right: 30px;
+}
+#user_photo {
+        position: absolute;
+        top: 0px;
+        right: 120px;
+}
+#login_button {
+        position: absolute;
+        top: 20px;
+}
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="static/scripts.js"></script>
+  </head>
+  <body onload="init()">
+    <div id="fb-root">
+    </div>
+    <h1>StudyBoard</h1>
+    <table width=100%>
+      <tr>
+	<td width=25%><a href="home.html">Home</a></td>
+	<td width=25%><a href="sheets.html">Studysheets</a></td>
+	<td width=25%><a href="whiteboard.html">Whiteboard</a></td>
+	<td width=25%><a href="credits.html">Credits</a></td>
+      </tr>
+      <table width="100%">
+      </table>
+      <div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
+	<div id="user-info"></div>
+	<button id="login_button">Login</button>
+	<div id="debug"></div>
+      </div>
+      <p>
 	Welcome to <font color=cyan>StudyBoard</font>, a study aid developed by Stuyvesant High School students.
-</p>
-<p>
+      </p>
+      <p>
 	A project started by four Stuyvesant High School seniors (one of them an extraordinarily good looking young man) <font color=cyan>StudyBoard</font> currently has a live whiteboard and a studysheet uploading system.
-</p>
-<br>
-<font size="2">Brian Lam, Raymond Zeng, Dexter Tong, and Jason Peng</font>
-</body>
+      </p>
+      <br>
+      <font size="2">Brian Lam, Raymond Zeng, Dexter Tong, and Jason Peng</font>
+  </body>
 </html>
