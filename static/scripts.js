@@ -183,3 +183,23 @@ function logout(response){
     document.getElementById('debug').innerHTML = "";
     document.getElementById('other').style.display = "none";
 }
+
+//Highlight selection
+
+function hightlight(){
+    var colors = $(".color");
+    for (var i=0;i<colors.length;i++){
+	if(x == $(colors[i]).attr("id"))
+	{
+	    $(colors[i]).css("border","2px solid black")
+	}
+	else
+	{
+	    $(colors[i]).css("border","2px solid white")
+	}
+    }
+}
+
+$(document).ready(function(){
+    $("#palette").click(hightlight);
+});
