@@ -25,7 +25,7 @@ def credits():
     return render_template("credits.html")
 
 @app.route("/<name>", methods = ["GET", "POST"])
-def home():
+def home(name):
     return render_template("home.html")
 
 if __name__ == '__main__':
