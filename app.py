@@ -28,6 +28,10 @@ def addsheet():
     tags = request.form["tags"]
     data = request.form["sheetData"]
     sheets[title] = [title, tags, data]
+
+def returnsheets():
+    keys = sheets.keys()
+    
     
 
 @app.route("/credits.html", methods = ["GET", "POST"])
