@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <style type="text/css">
+canvas {
+	background-color:white;
+	box-shadow:4px 4px 8px cyan;
+}
+body {
+	background-color:black;
+	color:white;
+	padding-left:50px;
+}
+h1 {
+	font-size:30px;
+	color:cyan;
+}
+a {
+	color:white;
+}
+table {
+	border-color:white;
+	border-style:dashed;
+	border-width: 1px;
+}
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="static/scripts.js"></script>
+  </head>
+  <body onload="init()">
+	   <div id="fb-root"></div>
+    <h1>StudyBoard</h1>
+	<table  width=100%>
+	<tr>
+		<td width=25%><a href="home.html">Home</a></td>
+		<td width=25%><a href="sheets.html">Studysheets</a></td>
+		<td width=25%><a href="whiteboard.html">Whiteboard</a></td>
+		<td width=25%><a href="credits.html">Credits</a></td>
+	</tr>
+	<table width="100%">
+</table>
+
+<h3>Share a study sheet</h3>
+<form action="submit">
+	Title: <input type=text id="title"> <br><br>
+	Tags: <input type=text id="tags"> <br><br>
+	Data: 
+	<br><textarea id="sheetData" rows=20 cols=150> </textarea><br>
+	<button type="submit">Publish</button>
+</form>
+  </body>
+</html>
