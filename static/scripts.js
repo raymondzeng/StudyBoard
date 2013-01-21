@@ -127,7 +127,7 @@ function findxy(res,e)
   email
   about user
 */
-/*
+
 var button;
 var userInfo;
 window.fbAsyncInit = function() {
@@ -140,13 +140,12 @@ window.fbAsyncInit = function() {
     function updateButton(response) {
 	button = document.getElementById('fb-auth');
 	userInfo = document.getElementById('user-info');
-	
+
 	if (response.authResponse) {
 	    //user is already logged in and connected
 	    FB.api('/me', function(info) {
 		login(response, info);
 	    });
-	    
 	    button.onclick = function() {
 		FB.logout(function(response) {
 		    logout(response);
@@ -154,6 +153,8 @@ window.fbAsyncInit = function() {
 	    };
 	} else {
 	    //user is not connected to your app or logged out
+	    $('#fb-prelog').css('display','inline-block');
+	    $('#fb-postlog').css('display','none');
 	    button.innerHTML = 'Login';
 	    button.onclick = function() {
 		FB.login(function(response) {
@@ -183,8 +184,10 @@ $(document).ready(function() {
 function login(response, info){
     if (response.authResponse) {
 	var accessToken = response.authResponse.accessToken;
-	userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name;
-	button.innerHTML = 'Logout';
+	userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' +'<p id="user_name">' + info.name + '</p>';
+	$('#fb-prelog').css('display','none');
+	$('#fb-postlog').css('display','inline-block');
+	//button.innerHTML = 'Logout';
 	document.getElementById('other').style.display = "block";
     }
 }
@@ -194,7 +197,6 @@ function logout(response){
     document.getElementById('debug').innerHTML = "";
     document.getElementById('other').style.display = "none";
 }
-*/
 /*
 $(function(){
     var canvas = document.getElementById('picker');
