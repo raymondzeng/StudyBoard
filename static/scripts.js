@@ -135,7 +135,6 @@ window.fbAsyncInit = function() {
 	    FB.api('/me', function(info) {
 		login(response, info);
 	    });
-	    
 	    button.onclick = function() {
 		FB.logout(function(response) {
 		    logout(response);
@@ -143,6 +142,8 @@ window.fbAsyncInit = function() {
 	    };
 	} else {
 	    //user is not connected to your app or logged out
+	    $('#fb-prelog').css('display','inline-block');
+	    $('#fb-postlog').css('display','none');
 	    button.innerHTML = 'Login';
 	    button.onclick = function() {
 		FB.login(function(response) {
@@ -172,8 +173,10 @@ $(document).ready(function() {
 function login(response, info){
     if (response.authResponse) {
 	var accessToken = response.authResponse.accessToken;
-	userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name;
-	button.innerHTML = 'Logout';
+	userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' +'<p id="user_name">' + info.name + '</p>';
+	$('#fb-prelog').css('display','none');
+	$('#fb-postlog').css('display','inline-block');
+	//button.innerHTML = 'Logout';
 	document.getElementById('other').style.display = "block";
     }
 }
