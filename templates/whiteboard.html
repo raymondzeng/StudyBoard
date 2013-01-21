@@ -1,27 +1,29 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
     <style type="text/css">
-      canvas{
-      background-color:gray;
-      }
-      body{
-      background-color:#222222;
-      color:white;
-      padding-left:50px;
-      }
-      h1{
-      font-size:30px;
-      color:white;
-      }
-      a{
-      color:white;
-      }
-	 table{
-      border-color:white;
-     border-style:dashed;
-     border-width:1px;
-    }
+canvas {
+	background-color:white;
+	box-shadow:4px 4px 8px cyan;
+}
+body {
+	background-color:black;
+	color:white;
+	padding-left:50px;
+	font-family:tahoma;
+}
+h1 {
+	font-size:30px;
+	color:cyan;
+}
+a {
+	color:white;
+}
+table {
+	border-color:white;
+	border-style:dashed;
+	border-width: 1px;
+}
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="static/scripts.js"></script>
@@ -29,8 +31,8 @@
   <body onload="init()">
     <script type="text/javascript">
       window.Meebo||function(c){function p(){return["<",i,' onload="var d=',g,";d.getElementsByTagName('head')[0].",
-							    j,"(d.",h,"('script')).",k,"='//cim.meebo.com/cim?iv=",a.v,"&",q,"=",c[q],c[l]?
-							    "&"+l+"="+c[l]:"",c[e]?"&"+e+"="+c[e]:"","'\"></",i,">"].join("")}var f=window,
+j,"(d.",h,"('script')).",k,"='//cim.meebo.com/cim?iv=",a.v,"&",q,"=",c[q],c[l]?
+"&"+l+"="+c[l]:"",c[e]?"&"+e+"="+c[e]:"","'\"></",i,">"].join("")}var f=window,
       a=f.Meebo=f.Meebo||function(){(a._=a._||[]).push(arguments)},d=document,i="body",
       m=d[i],r;if(!m){r=arguments.callee;return setTimeout(function(){r(c)},100)}a.$=
       {0:+new Date};a.T=function(u){a.$[u]=new Date-a.$[0]};a.v=5;var j="appendChild",
@@ -46,29 +48,30 @@
     <div id="fb-root"></div>
     <canvas id="can" width="960"height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
     <h1>StudyBoard</h1>
-	<table  width=100%>
+<table width=100%>
 	<tr>
-		<td width=25%><a href="index.html">Home</a></td>
-		<td width=25%>Whiteboard</td>
-		<td width=25%>Credits</td>
+		<td width=25%><a href="home.html">Home</a></td>
+		<td width=25%><a href="sheets.html">Studysheets</a></td>
+		<td width=25%><a href="whiteboard.html">Whiteboard</a></td>
+		<td width=25%><a href="credits.html">Credits</a></td>
 	</tr>
-	</table>
-    <div style="position:absolute;right:100px;" id="fb stuff">
+</table>
+    <div style="position:absolute;right:100px;top:20px;" id="fb stuff">
       <button id="fb-auth">Login</button>
       <br />
       <div id="user-info"></div>
       <br />
       <div id="debug"></div>
     </div>
-    <div style="position:absolute;top:12%;left:1200px;">Choose Color</div>
-    <div style="position:absolute;top:15%;left:1200px;width:30px;height:30px;background:green;" id="green" onclick="color(this)"></div>
-    <div style="position:absolute;top:15%;left:1250px;width:30px;height:30px;background:blue;" id="blue" onclick="color(this)"></div>
-    <div style="position:absolute;top:15%;left:1300px;width:30px;height:30px;background:red;" id="red" onclick="color(this)"></div>
-    <div style="position:absolute;top:19%;left:1200px;width:30px;height:30px;background:yellow;" id="yellow" onclick="color(this)"></div>
-    <div style="position:absolute;top:19%;left:1250px;width:30px;height:30px;background:orange;" id="orange" onclick="color(this)"></div>
-    <div style="position:absolute;top:19%;left:1300px;width:30px;height:30px;background:black;" id="black" onclick="color(this)"></div>
-    <div style="position:absolute;top:23%;left:1200px;">Eraser</div>
-    <div style="position:absolute;top:25%;left:1200px;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
+    <div style="position:absolute;top:12%;left:85%;">Choose Color</div>
+    <div style="position:absolute;top:15%;left:85%;width:30px;height:30px;background:green;border-style:solid;border-color:white;border-width:1px;" id="green" onclick="color(this)"></div>
+    <div style="position:absolute;top:15%;left:88%;width:30px;height:30px;background:blue;border-style:solid;border-color:white;border-width:1px;" id="blue" onclick="color(this)"></div>
+    <div style="position:absolute;top:15%;left:91%;width:30px;height:30px;background:red;border-style:solid;border-color:white;border-width:1px;" id="red" onclick="color(this)"></div>
+    <div style="position:absolute;top:19%;left:85%;width:30px;height:30px;background:yellow;border-style:solid;border-color:white;border-width:1px;" id="yellow" onclick="color(this)"></div>
+    <div style="position:absolute;top:19%;left:88%;width:30px;height:30px;background:orange;border-style:solid;border-color:white;border-width:1px;" id="orange" onclick="color(this)"></div>
+    <div style="position:absolute;top:19%;left:91%;width:30px;height:30px;background:black;border-style:solid;border-color:white;border-width:1px;" id="black" onclick="color(this)"></div>
+    <div style="position:absolute;top:23%;left:85%;">Eraser</div>
+    <div style="position:absolute;top:25%;left:85%;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
     <input type="button" value="save" id="btn" size="30" onclick="save()"style="position:absolute;top:680px;left:25px;">
     <input type="button" value="clear" id="clr" size="23" onclick="erase()"style="position:absolute;top:680px;left:80px;">
     <input type="button" value="load" id="ld" size="23" onclick="load()"style="position:absolute;top:680px;left:135px">
