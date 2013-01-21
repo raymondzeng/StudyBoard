@@ -138,7 +138,7 @@ window.fbAsyncInit = function() {
 	      oauth: true});
     
     function updateButton(response) {
-	button = document.getElementById('fb-auth');
+	button = document.getElementById('login_button');
 	userInfo = document.getElementById('user-info');
 
 	if (response.authResponse) {
@@ -153,8 +153,6 @@ window.fbAsyncInit = function() {
 	    };
 	} else {
 	    //user is not connected to your app or logged out
-	    $('#fb-prelog').css('display','inline-block');
-	    $('#fb-postlog').css('display','none');
 	    button.innerHTML = 'Login';
 	    button.onclick = function() {
 		FB.login(function(response) {
@@ -184,10 +182,10 @@ $(document).ready(function() {
 function login(response, info){
     if (response.authResponse) {
 	var accessToken = response.authResponse.accessToken;
-	userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' +'<p id="user_name">' + info.name + '</p>';
+	userInfo.innerHTML = '<img id="user_photo" src="https://graph.facebook.com/' + info.id + '/picture">' +'<p id="user_name">' + info.name + '</p>';
 	$('#fb-prelog').css('display','none');
 	$('#fb-postlog').css('display','inline-block');
-	//button.innerHTML = 'Logout';
+	button.innerHTML = 'Logout';
 	document.getElementById('other').style.display = "block";
     }
 }
@@ -226,3 +224,13 @@ $(function(){
     });
 });
 */
+$(document).ready(function(){
+    $("#trigger").click(function(){
+	$("#panel").toggle("fast");
+	if($('#trigger').html() == 'Show Chat')
+	    $('#trigger').html('Hide Chat');
+	else
+	    $('#trigger').html('Show Chat');
+	return false;
+    });
+});
