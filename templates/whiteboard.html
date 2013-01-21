@@ -29,7 +29,7 @@ table {
     <script type="text/javascript" src="static/scripts.js"></script>
   </head>
   <body onload="init()">
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
       window.Meebo||function(c){function p(){return["<",i,' onload="var d=',g,";d.getElementsByTagName('head')[0].",
 j,"(d.",h,"('script')).",k,"='//cim.meebo.com/cim?iv=",a.v,"&",q,"=",c[q],c[l]?
 "&"+l+"="+c[l]:"",c[e]?"&"+e+"="+c[e]:"","'\"></",i,">"].join("")}var f=window,
@@ -44,7 +44,7 @@ j,"(d.",h,"('script')).",k,"='//cim.meebo.com/cim?iv=",a.v,"&",q,"=",c[q],c[l]?
       d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{var t=
       b.contentWindow[g];t.write(p());t.close()}catch(x){b[k]=o+'d.write("'+p().replace(/"/g,
       '\\"')+'");d.close();'}a.T(1)}({network:"studyboard_do55jo"});
-    </script>
+    </script>-->
     <div id="fb-root"></div>
     <canvas id="can" width="960"height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
     <h1>StudyBoard</h1>
@@ -63,21 +63,19 @@ j,"(d.",h,"('script')).",k,"='//cim.meebo.com/cim?iv=",a.v,"&",q,"=",c[q],c[l]?
       <br />
       <div id="debug"></div>
     </div>
-    <div style="position:absolute;top:12%;left:85%;">Choose Color</div>
-    <div style="position:absolute;top:15%;left:85%;width:30px;height:30px;background:green;border-style:solid;border-color:white;border-width:1px;" id="green" onclick="color(this)"></div>
-    <div style="position:absolute;top:15%;left:88%;width:30px;height:30px;background:blue;border-style:solid;border-color:white;border-width:1px;" id="blue" onclick="color(this)"></div>
-    <div style="position:absolute;top:15%;left:91%;width:30px;height:30px;background:red;border-style:solid;border-color:white;border-width:1px;" id="red" onclick="color(this)"></div>
-    <div style="position:absolute;top:19%;left:85%;width:30px;height:30px;background:yellow;border-style:solid;border-color:white;border-width:1px;" id="yellow" onclick="color(this)"></div>
-    <div style="position:absolute;top:19%;left:88%;width:30px;height:30px;background:orange;border-style:solid;border-color:white;border-width:1px;" id="orange" onclick="color(this)"></div>
-    <div style="position:absolute;top:19%;left:91%;width:30px;height:30px;background:black;border-style:solid;border-color:white;border-width:1px;" id="black" onclick="color(this)"></div>
-    <div style="position:absolute;top:23%;left:85%;">Eraser</div>
-    <div style="position:absolute;top:25%;left:85%;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
+    <div class="colorpalette" style="position:absolute;top:120px;left:994px;">
+      <canvas id="palette" width="210" height="250"></canvas> 
+      <div class="ctrlpanel">
+        <div><label>RGB</label> <input type="text" id="RGB" /></div>
+        <div><label>HEX</label> <input type="text" id="HEX" /></div>
+      </div>
+    </div>
     <input type="button" value="save" id="btn" size="30" onclick="save()"style="position:absolute;top:680px;left:25px;">
     <input type="button" value="clear" id="clr" size="23" onclick="erase()"style="position:absolute;top:680px;left:80px;">
     <input type="button" value="load" id="ld" size="23" onclick="load()"style="position:absolute;top:680px;left:135px">
     <p style="position:absolute;top:700px;left:25px;">Credits to <a href="http://stackoverflow.com/questions/2368784/draw-by-mouse-with-html5-canvas">Stackoverflow</a> for the whiteboard code</p>
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
       Meebo("domReady");
-    </script>
+    </script>-->
   </body>
 </html>
