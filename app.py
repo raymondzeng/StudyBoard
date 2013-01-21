@@ -1,8 +1,11 @@
+import shelve
 from flask import Flask
 from flask import request
 from flask import render_template
 
 app = Flask(__name__)
+
+sheets = shelve.open("sheets")
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
@@ -19,6 +22,13 @@ def whiteboard():
 @app.route("/sheets.html", methods = ["GET", "POST"])
 def sheets():
     return render_template("sheets.html")
+
+def addsheet():
+    title = request.form["title"]
+    tags = request.form["tags"]
+    data = request.form["sheetData"]
+    sheets[title] = [title, tags, data]
+    
 
 @app.route("/credits.html", methods = ["GET", "POST"])
 def credits():
