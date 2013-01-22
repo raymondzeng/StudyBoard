@@ -1,5 +1,16 @@
 import shelve
 
+canvas_img = ""
+
+def getCanvasImg():
+    print("gotten" + canvas_img)
+    return canvas_img
+
+def setCanvasImg(str):
+    canvas_img = str
+    print("set")
+    return True
+
 def addsheet(title, tags, data):
     sheets = shelve.open("sheets")
     data = {"ti":title, "ta":tags, "da":data}

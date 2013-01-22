@@ -1,5 +1,6 @@
 //CANVAS STUFF
 var saved_image = "";
+var setIntv, getIntv;
 var canvas1,canvas2,ctx1,ctx2,flag=false,prevX=0,currX=0,prevY=0,currY=0,dot_flag=false;
 var x="black",y=2;
 
@@ -88,8 +89,7 @@ function erase()
 
 function save()
 {
-    var dataUrl = canvas1.toDataURL();
-    saved_image = dataUrl;
+    saved_image = canvas1.toDataURL();
 }
 
 function load(){
@@ -274,6 +274,29 @@ function hightlight(){
     }
 }
 
+function startSet(){
+    setIntv = setInterval(setImg,100);
+}
+function startGet(){
+    getIntv = setInterval(getImg,100);
+}
+function stopSet(){
+    clearInterval(setIntv);
+}
+function stopGet(){
+    clearInterval(getIntv);
+}
+function setImg(){
+    var s = canvas1.toDataURL();
+    $.getJSON('/setImg',{s:s});
+}
+function getImg(){
+    $.getJSON('/getImg',function(data) {
+	console.log(data.result);
+    });
+}
+	    
+    
 $(document).ready(function(){
     $("#paletteselection").click(hightlight);
 });

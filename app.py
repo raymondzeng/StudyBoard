@@ -1,9 +1,9 @@
 import shelve
-import utils
+from utils import getCanvasImg, setCanvasImg
 from flask import Flask
 from flask import request
 from flask import render_template
-
+from flask import jsonify
 app = Flask(__name__)
 
 @app.route("/", methods = ["GET", "POST"])
@@ -38,5 +38,14 @@ def credits():
 def home(name):
     return render_template("home.html")
 
+@app.route("/setImg", methods = ["GET", "POST"])
+def set_String():
+    s = request.args.get('s','')
+    return jsonify(result=setCanvasImg(s))
+
+@app.route("/getImg", methods = ["GET", "POST"])
+def get_String():
+    return jsonify(result=getCanvasImg())
+                   
 if __name__ == '__main__':
     app.run(debug = True)
