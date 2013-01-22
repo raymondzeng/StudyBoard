@@ -69,8 +69,9 @@ table {
 </form>
 	<h3> Find a study sheet </h3>
 	{% for sheet in sheets %}
-		<b>{{sheet}} <br></b>
-		{{sheet[ta]}} <br>
+		<b><font color=green">{{sheet["ti"]}}</font></b> <br>
+		{{sheet["da"]}} <br>
+		<font size="1">Tags: {{sheet["ta"]}}</font><br><br><hr>
 	{% endfor %}
   </body>
 </html>
