@@ -68,7 +68,7 @@ table {
 	<button type="submit">Publish</button>
 </form>
 	<h3> Find a study sheet </h3><br>
-	<font color="green">Click to titles to show and hide study sheets</font>
+	<font color="green">Click on Titles to show study sheets, and the hide buttons to hide</font>
 	{% for sheet in sheets %}
 		<p onclick='showStuff("{{sheet['ti']}}"); return false;' <b><font color=green">{{sheet["ti"]}}</font></b></p>
 		<p onclick='hideStuff("{{sheet['ti']}}"); return false;'><font color=green" size="1"> Click to hide </font></p>
