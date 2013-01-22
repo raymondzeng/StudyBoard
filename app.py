@@ -24,9 +24,9 @@ def sheets():
 
 @app.route("/addsheet", methods = ["GET", "POST"])
 def addsheet():
-    title = str(request.form["title"])
-    tags = str(request.form["tags"])
-    data = str(request.form["sheetData"])
+    title = request.form["title"]
+    tags = request.form["tags"]
+    data = request.form["sheetData"]
     utils.addsheet(title, tags, data)
     return render_template("sheets.html", sheets=utils.returnsheets())
 

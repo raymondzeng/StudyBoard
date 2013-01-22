@@ -1,11 +1,10 @@
 import shelve
 
 sheets = shelve.open("sheets")
-sheets["test"] = "hello"
 
 def addsheet(title, tags, data):
     data = {"ti":title, "ta":tags, "da":data}
-    sheets[title] = data
+    sheets[str(title)] = data
     return True
 
 def returnsheets():
