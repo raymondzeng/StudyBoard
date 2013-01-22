@@ -23,7 +23,14 @@ function init()
     canvas1.addEventListener("mouseup",function(e){ findxy('up',e)  },false);
     canvas1.addEventListener("mouseout",function(e){ findxy('out',e)  },false);
     canvas2.addEventListener("mouseup",function(e){ selectcolor(e)},false);
-} 
+}
+
+function showStuff(id) {
+		document.getElementById(id).style.display = 'block';
+}
+function hideStuff(id) {
+		document.getElementById(id).style.display = 'none';
+}
 
 function selectcolor(e)
 {

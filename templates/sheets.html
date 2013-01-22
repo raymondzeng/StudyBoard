@@ -67,10 +67,12 @@ table {
 	  <br><textarea name="sheetData" rows=20 cols=150></textarea><br>
 	<button type="submit">Publish</button>
 </form>
-	<h3> Find a study sheet </h3>
+	<h3> Find a study sheet </h3><br>
+	<font color="green">Click to titles to show and hide study sheets</font>
 	{% for sheet in sheets %}
-		<b><font color=green">{{sheet["ti"]}}</font></b> <br>
-		{{sheet["da"]}} <br>
+		<p onclick='showStuff("{{sheet['ti']}}"); return false;' <b><font color=green">{{sheet["ti"]}}</font></b></p>
+		<p onclick='hideStuff("{{sheet['ti']}}"); return false;'><font color=green" size="1"> Click to hide </font></p>
+		<span id="{{sheet['ti']}}" style="display: none;"> {{sheet["da"]}} </span><br>
 		<font size="1">Tags: {{sheet["ta"]}}</font><br><br><hr>
 	{% endfor %}
   </body>

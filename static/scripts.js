@@ -3,6 +3,13 @@ var saved_image = "";
 var canvas1,canvas2,ctx1,ctx2,flag=false,prevX=0,currX=0,prevY=0,currY=0,dot_flag=false;
 var x="black",y=2;
 
+function showStuff(id) {
+		document.getElementById(id).style.display = 'block';
+}
+function hideStuff(id) {
+		document.getElementById(id).style.display = 'none';
+}
+
 function init()
 {
     canvas1=document.getElementById('can');
