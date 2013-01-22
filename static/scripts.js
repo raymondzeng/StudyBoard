@@ -88,17 +88,14 @@ function erase()
 
 function save()
 {
-    var dataUrl = canvas.toDataURL();
+    var dataUrl = canvas1.toDataURL();
     saved_image = dataUrl;
 }
 
 function load(){
     var img = new Image;
-    img.onload = function(){
-	erase();
-	ctx1.drawImage(img,0,0);
-    };
     img.src = saved_image;
+    ctx1.drawImage(img,0,0);
 }
 
 function findxy(res,e)
