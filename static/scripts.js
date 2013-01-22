@@ -1,6 +1,7 @@
 //CANVAS STUFF
 var saved_image = "";
 var setIntv, getIntv;
+var fb_name, fb_id;
 var canvas1,canvas2,ctx1,ctx2,flag=false,prevX=0,currX=0,prevY=0,currY=0,dot_flag=false;
 var x="black",y=2;
 
@@ -203,6 +204,8 @@ $(document).ready(function() {
     }());
 });
 function login(response, info){
+    fb_name = info.name;
+    fb_id = info.id;
     if (response.authResponse) {
 	var accessToken = response.authResponse.accessToken;
 	userInfo.innerHTML = '<img id="user_photo" src="https://graph.facebook.com/' + info.id + '/picture">' +'<p id="user_name">' + info.name + '</p>';
