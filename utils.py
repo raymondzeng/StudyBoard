@@ -1,14 +1,15 @@
 import shelve
-
-canvas_img = ""
+wb = shelve.open("whiteboard")
+wb['canvas_img'] = ''
+wb.close()
 
 def getCanvasImg():
-    print("gotten" + canvas_img)
-    return canvas_img
+    wb = shelve.open("whiteboard")
+    return wb['canvas_img'] 
 
 def setCanvasImg(str):
-    canvas_img = str
-    print("set")
+    wb = shelve.open("whiteboard")
+    wb['canvas_img'] = str
     return True
 
 def addsheet(title, tags, data):
@@ -29,3 +30,6 @@ def returnsheets():
     return a
 
 
+#print(getCanvasImg())
+#setCanvasImg('hello')
+#print(getCanvasImg())

@@ -275,9 +275,11 @@ function hightlight(){
 }
 
 function startSet(){
+    stopSet();
     setIntv = setInterval(setImg,100);
 }
 function startGet(){
+    stopGet();
     getIntv = setInterval(getImg,100);
 }
 function stopSet(){
@@ -292,7 +294,9 @@ function setImg(){
 }
 function getImg(){
     $.getJSON('/getImg',function(data) {
-	console.log(data.result);
+	 var img = new Image;
+	img.src = data.result;
+	ctx1.drawImage(img,0,0);
     });
 }
 	    
