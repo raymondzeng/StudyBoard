@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
-<head>
-<style type="text/css">
+  <head>
+    <style type="text/css">
 canvas {
 	background-color:white;
 	box-shadow:4px 4px 8px cyan;
@@ -38,62 +38,42 @@ table {
         position: absolute;
         top: 20px;
 }
-</style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="static/scripts.js"></script>
-</head>
-<body onload="init()">
-<div id="fb-root">
-</div>
-<h1>StudyBoard</h1>
-<table width=100%>
-<tr>
-	<td width=25%>
-		<a href="home.html">Home</a>
-	</td>
-	<td width=25%>
-		<a href="sheets.html">Studysheets</a>
-	</td>
-	<td width=25%>
-		<a href="whiteboard.html">Whiteboard</a>
-	</td>
-	<td width=25%>
-		<a href="credits.html">Credits</a>
-	</td>
-</tr>
-<table width="100%">
-</table>
-<div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
-	<div id="user-info">
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="static/scripts.js"></script>
+  </head>
+  <body onload="init()">
+    <div id="fb-root"></div>
+    <h1>StudyBoard</h1>
+	<table  width=100%>
+	<tr>
+	  <td width=25%><a href="home.html">Home</a></td>
+	  <td width=25%><a href="sheets.html">Studysheets</a></td>
+	  <td width=25%><a href="whiteboard.html">Whiteboard</a></td>
+	  <td width=25%><a href="credits.html">Credits</a></td>
+	</tr>
+	<table width="100%">
+	</table>
+	<div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
+	  <div id="user-info"></div>
+	  <button id="login_button">Login</button>
+	  <div id="debug"></div>
 	</div>
-	<button id="login_button">Login</button>
-	<div id="debug">
-	</div>
-</div>
-<h3>Share a study sheet</h3>
-<form action="addsheet" method="POST">
-	 Title: <input type=text name="title"><br>
-	<br>
-	 Tags: <input type=text name="tags"><br>
-	<br>
-	 Data: <br>
-	<textarea name="sheetData" rows=20 cols=150></textarea><br>
+	<h3>Share a study sheet</h3>
+	<form action="addsheet" method="POST">
+	  Title: <input type=text name="title"> <br><br>
+	  Tags: <input type=text name="tags"> <br><br>
+	  Data: 
+	  <br><textarea name="sheetData" rows=20 cols=150></textarea><br>
 	<button type="submit">Publish</button>
 </form>
-<h3> Find a study sheet </h3>
-<br>
-<font color="green">Click to titles to show and hide study sheets</font>
-{% for sheet in sheets %}
-<p onclick='showStuff("{{sheet[' ti']}}"); return false;' <b>
-	<font color=green">{{sheet["ti"]}}</font></b>
-</p>
-<p onclick='hideStuff("{{sheet[' ti']}}"); return false;'>
-	<font color=green" size="1"> Click to hide </font>
-</p>
-<span id="{{sheet['ti']}}" style="display: none;"> {{sheet["da"]}} </span><br>
-<font size="1">Tags: {{sheet["ta"]}}</font><br>
-<br>
-<hr>
- {% endfor %}
-</body>
+	<h3> Find a study sheet </h3><br>
+	<font color="green">Click to titles to show and hide study sheets</font>
+	{% for sheet in sheets %}
+		<p onclick='showStuff("{{sheet['ti']}}"); return false;' <b><font color=green">{{sheet["ti"]}}</font></b></p>
+		<p onclick='hideStuff("{{sheet['ti']}}"); return false;'><font color=green" size="1"> Click to hide </font></p>
+		<span id="{{sheet['ti']}}" style="display: none;"> {{sheet["da"]}} </span><br>
+		<font size="1">Tags: {{sheet["ta"]}}</font><br><br><hr>
+	{% endfor %}
+  </body>
 </html>
