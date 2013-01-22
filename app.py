@@ -1,4 +1,5 @@
 import shelve
+import utils
 from utils import getCanvasImg, setCanvasImg
 from flask import Flask
 from flask import request
