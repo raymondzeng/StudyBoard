@@ -60,16 +60,17 @@ table {
 	  <div id="debug"></div>
 	</div>
 	<h3>Share a study sheet</h3>
-	<form action="addsheet()">
-	  Title: <input type=text id="title"> <br><br>
-	  Tags: <input type=text id="tags"> <br><br>
+	<form action="addsheet" method="POST">
+	  Title: <input type=text name="title"> <br><br>
+	  Tags: <input type=text name="tags"> <br><br>
 	  Data: 
-	  <br><textarea id="sheetData" rows=20 cols=150></textarea><br>
+	  <br><textarea name="sheetData" rows=20 cols=150></textarea><br>
 	<button type="submit">Publish</button>
 </form>
 	<h3> Find a study sheet </h3>
 	{% for sheet in sheets %}
-		{{sheet}} <br>
+		<b>{{sheet}} <br></b>
+		{{sheet[ta]}} <br>
 	{% endfor %}
   </body>
 </html>
