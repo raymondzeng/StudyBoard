@@ -15,8 +15,10 @@ function init()
     w2=canvas2.width;
     h2=canvas2.height;
     var image=new Image();
-    image.src="static/studyboardpalette.png";
-    ctx2.drawImage(image,0,0);
+    image.src="static/images/studyboardpalette.png";
+    image.onload = function () {
+	ctx2.drawImage(image,0,0);
+    }
 
     canvas1.addEventListener("mousemove",function(e){ findxy('move',e)  },false);
     canvas1.addEventListener("mousedown",function(e){ findxy('down',e)  },false);
