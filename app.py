@@ -1,4 +1,5 @@
 import shelve
+import utils
 from flask import Flask
 from flask import request
 from flask import render_template
@@ -21,18 +22,14 @@ def whiteboard():
 
 @app.route("/sheets.html", methods = ["GET", "POST"])
 def sheets():
-    return render_template("sheets.html")
+    return render_template("sheets.html", sheets=utils.returnsheets())
 
 def addsheet():
     title = request.form["title"]
     tags = request.form["tags"]
     data = request.form["sheetData"]
-    sheets[title] = [title, tags, data]
-
-def returnsheets():
-    keys = sheets.keys()
-    
-    
+    utils.addsheet(title, tags, data)
+    return sheets()
 
 @app.route("/credits.html", methods = ["GET", "POST"])
 def credits():
