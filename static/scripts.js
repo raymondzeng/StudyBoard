@@ -44,6 +44,23 @@ function selectcolor(e)
 	x=hex;
 }
 
+function color(obj)
+{
+    switch(obj.id)
+    {
+    case "green" : x="green";break;
+    case "blue" : x="blue";break;
+    case "red" : x="red";break;
+    case "yellow" : x="yellow";break;
+    case "orange" : x="orange";break;
+    case "black" : x="black";break;
+    case "white" : x="white";break;
+    }
+    if(x=="white")y=20;
+    else y=2;
+    
+}
+
 function draw()
 {
     ctx1.beginPath();
@@ -233,4 +250,24 @@ $(document).ready(function(){
 	    $('#trigger').html('Show Chat');
 	return false;
     });
+});
+
+
+//High Color Selection
+function hightlight(){
+    var colors = $(".color");
+    for (var i=0;i<colors.length;i++){
+	if(x == $(colors[i]).attr("id"))
+	{
+	    $(colors[i]).css("border","2px solid gray")
+	}
+	else
+	{
+	    $(colors[i]).css("border","2px solid white")
+	}
+    }
+}
+
+$(document).ready(function(){
+    $("#paletteselection").click(hightlight);
 });
