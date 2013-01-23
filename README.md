@@ -3,7 +3,7 @@ StudyBoard
 
 http://ml7.stuycs.org:7175
 
-StudyBoard is intended to be a study aid. 
+StudyBoard is a study aid. 
 
 Features:
 - Real-time whiteboard for collaborative work
