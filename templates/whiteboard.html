@@ -1,129 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
-<head>
-<style type="text/css">
-canvas {
-	background-color:white;
-	box-shadow:4px 4px 8px cyan;
-}
-body {
-	background-color:black;
-	color:white;
-	padding-left:50px;
-        font-family:tahoma;
-}
-#paletteselection {
-        position:absolute;
-        bottom:0px;
-        right:0px;
-        width:250px;
-}
-h1 {
-	font-size:30px;
-	color:cyan;
-}
-a {
-	color:white;
-}
-table {
-	border-color:white;
-	border-style:dashed;
-	border-width: 1px;
-}
-#user_name {
-        position: absolute;
-        top: 0px;
-        right: 30px;
-}
-#user_photo {
-        position: absolute;
-        top: 0px;
-        right: 120px;
-}
-#login_button {
-        position: absolute;
-        top: 20px;
-}
-#panel{
-    position: fixed;
-    z-index: 9999;
-    width: 300px;
-    height: 100%;
-    right: 2px;
-    background-color:#E0E0E0;
-    display: none;
-    -webkit-box-shadow: 0px 0px 8px 0px #000000;
-    -moz-box-shadow: 0px 0px 8px 0px #000000;
-    box-shadow: 0px 0px 8px 0px #000000;
-    padding-bottom:100px
-}
-</style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="static/scripts.js"></script>
-</head>
-<body onload="init()">
-<div id="fb-root">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="static/scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" media="all"/>
+  </head>
+  <body onload="init()">
+    <div id="fb-root">
+    </div>
+    <canvas id="can" width="960" height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
+    <h1>StudyBoard</h1>
+    <header>
+      <a href="home.html">Home</a>
+      <a href="whiteboard.html">Live Whiteboard</a>
+      <a href="sheets.html">Studysheets</a>
+      <a href="credits.html">Credits</a>
+      <a href="#chat" id="trigger"><font color="cyan">Show Live Chat</a>
+    </header>
+    <div id="panel">
+    </div>
+    <div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
+      <div id="user-info">
+      </div>
+      <button id="login_button">Login</button>
+      <div id="debug">
+      </div>
+    </div>
+    <div class="colorpalette" style="position:absolute;top:120px;left:994px;">
+      <canvas id="palette" width="210" height="250"></canvas>
+      <div class="ctrlpanel">
+	<div>
+	  <label>RGB</label><input type="text" id="RGB"/>
+	</div>
+	<div>
+	  <label>HEX</label><input type="text" id="HEX"/>
+	</div>
+      </div>
+    </div>
+    <div id="paletteselection">
+      <div style="top:1%;left:1200px;">
+	Choose Color
+      </div>
+      <div class="color" ; style="top:1%;left:1200px;width:30px;height:30px;background:green;border:2px solid white;" id="green" onclick="color(this)">
+      </div>
+      <div class="color" ; style="top:1%;left:1250px;width:30px;height:30px;background:blue;border:2px solid white;" id="blue" onclick="color(this)">
+      </div>
+      <div class="color" style="top:1%;left:1300px;width:30px;height:30px;background:red;border:2px solid white;" id="red" onclick="color(this)">
+      </div>
+      <div class="color" style="top:1%;left:1200px;width:30px;height:30px;background:yellow;border:2px solid white;" id="yellow" onclick="color(this)">
+      </div>
+      <div class="color" style="top:1%;left:1250px;width:30px;height:30px;background:orange;border:2px solid white;" id="orange" onclick="color(this)">
+      </div>
+      <div class="color" style="top:1%;left:1300px;width:30px;height:30px;background:black;border:2px solid white;" id="black" onclick="color(this)">
+      </div>
+      <div style="top:23%;left:1200px;">
+	Eraser
+      </div>
+      <div class="color" style="top:25%;left:1200px;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)">
+      </div>
 </div>
-<canvas id="can" width="960" height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
-<h1>StudyBoard</h1>
-<table width=100%>
-<tr>
-	<td width=20%><a href="home.html">Home</a></td>
-	<td width=20%><a href="whiteboard.html">Live Whiteboard</a></td>
-	<td width=20%><a href="sheets.html">Studysheets</a></td>
-	<td width=20%><a href="credits.html">Credits</a></td>
-	<td width=20%><a href="#chat" id="trigger"><font color="cyan">Show Live Chat</a></font></td>
-</tr>
-</table>
-<div id="panel">
-</div>
-<div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
-	<div id="user-info">
-	</div>
-	<button id="login_button">Login</button>
-	<div id="debug">
-	</div>
-</div>
-<div class="colorpalette" style="position:absolute;top:120px;left:994px;">
-	<canvas id="palette" width="210" height="250"></canvas>
-	<div class="ctrlpanel">
-		<div>
-			<label>RGB</label><input type="text" id="RGB"/>
-		</div>
-		<div>
-			<label>HEX</label><input type="text" id="HEX"/>
-		</div>
-	</div>
-</div>
-<div id="paletteselection">
-	<div style="top:1%;left:1200px;">
-		Choose Color
-	</div>
-	<div class="color" ; style="top:1%;left:1200px;width:30px;height:30px;background:green;border:2px solid white;" id="green" onclick="color(this)">
-	</div>
-	<div class="color" ; style="top:1%;left:1250px;width:30px;height:30px;background:blue;border:2px solid white;" id="blue" onclick="color(this)">
-	</div>
-	<div class="color" style="top:1%;left:1300px;width:30px;height:30px;background:red;border:2px solid white;" id="red" onclick="color(this)">
-	</div>
-	<div class="color" style="top:1%;left:1200px;width:30px;height:30px;background:yellow;border:2px solid white;" id="yellow" onclick="color(this)">
-	</div>
-	<div class="color" style="top:1%;left:1250px;width:30px;height:30px;background:orange;border:2px solid white;" id="orange" onclick="color(this)">
-	</div>
-	<div class="color" style="top:1%;left:1300px;width:30px;height:30px;background:black;border:2px solid white;" id="black" onclick="color(this)">
-	</div>
-	<div style="top:23%;left:1200px;">
-		Eraser
-	</div>
-	<div class="color" style="top:25%;left:1200px;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)">
-	</div>
-</div>
-<input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:680px;left:25px;">
-<input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:680px;left:80px;">
-<input type="button" value="load" id="ld" size="23" onclick="load()" style="position:absolute;top:680px;left:135px">
-<input type="button" value="start real time" id="ss" size="23" onclick="startSet(); startGet()" style="position:absolute;top:680px;left:180px">
-
-<p style="position:absolute;top:700px;left:25px;">
-	Credits to <a href="http://stackoverflow.com/questions/2368784/draw-by-mouse-with-html5-canvas">Stackoverflow</a> for the whiteboard code
-</p>
-</body>
+    <input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:680px;left:25px;">
+    <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:680px;left:80px;">
+    <input type="button" value="load" id="ld" size="23" onclick="load()" style="position:absolute;top:680px;left:135px">
+    <input type="button" value="start real time" id="ss" size="23" onclick="startSet(); startGet()" style="position:absolute;top:680px;left:180px">
+    
+    <p style="position:absolute;top:700px;left:25px;">
+      Credits to <a href="http://stackoverflow.com/questions/2368784/draw-by-mouse-with-html5-canvas">Stackoverflow</a> for the whiteboard code
+    </p>
+  </body>
 </html>
