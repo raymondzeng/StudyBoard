@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
-<head>
-<link rel="stylesheet" type="text/css" href="/static/style.css" media="all"/>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="static/scripts.js"></script>
-</head>
-<body onload="init()">
-<div id="fb-root">
-</div>
-<a href="home.html"><h1>StudyBoard</h1></a>
-<table width=100%>
-    <header>
-      <a href="home.html">Home</a>
-      <a href="whiteboard.html">Live Whiteboard</a>
-      <a href="sheets.html">Studysheets</a>
-      <a href="credits.html">Credits</a>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" media="all"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="static/scripts.js"></script>
+    <a href="home.html">
+      <div id="bannerleft"><img src="static/images/bannerleft.png" style="position:absolute;left:0px;top:0px"></div>
+      <div id="bannercenter"></div>
+      <div id="bannerright"><img src="static/images/bannerright.png" style="position:absolute;right:0px;top:0px"></div>
+    </a>
+  </head>
+  <body onload="init()">
+    <div id="fb-root">
+    </div>
+    <table width=100%>
+      <header>
+	<a href="home.html">Home</a>
+	<a href="whiteboard.html">Live Whiteboard</a>
+	<a href="sheets.html">Studysheets</a>
+	<a href="credits.html">Credits</a>
     </header>
-<table width="100%">
-</table>
-<div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
+      <table width="100%">
+      </table>
+      <div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
 	<div id="user-info">
 	</div>
 	<button id="login_button">Login</button>
 	<div id="debug">
 	</div>
-</div>
-<h3>Credits</h3>
-<p>
+      </div>
+      <h3>Credits</h3>
+      <p>
 	<a href="http://stackoverflow.com/questions/2368784/draw-by-mouse-with-html5-canvas">This kind soul on Stackoverflow</a>
 	guided us in the right direction for the whiteboard code
-</p>
-<p>
+      </p>
+      <p>
 	<a href="http://girlswhogeek.com/tutorials/2007/show-and-hide-elements-with-javascript">This awesome person</a> helped us with the show/hide functionality in the studysheets page.
-</p>
-Developers: <br>
-<ul>
+      </p>
+      Developers: <br>
+      <ul>
 	<li>Brian Lam</li>
 	<li>Raymond Zeng</li>
 	<li>Dexter Tong</li>
 	<li>Jason Peeeeeeeng</li>
-</ul>
-</body>
+      </ul>
+  </body>
 </html>

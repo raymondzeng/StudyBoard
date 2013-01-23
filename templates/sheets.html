@@ -1,45 +1,49 @@
 <!DOCTYPE html> 
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
-	<link rel="stylesheet" type="text/css" href="/static/style.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" media="all"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="static/scripts.js"></script>
+    <a href="home.html">
+      <div id="bannerleft"><img src="static/images/bannerleft.png" style="position:absolute;left:0px;top:0px"></div>
+      <div id="bannercenter"></div>
+      <div id="bannerright"><img src="static/images/bannerright.png" style="position:absolute;right:0px;top:0px"></div>
+    </a>
   </head>
   <body onload="init()">
     <div id="fb-root"></div>
-    <a href="home.html"><h1>StudyBoard</h1></a>
     <header>
       <a href="home.html">Home</a>
       <a href="whiteboard.html">Live Whiteboard</a>
       <a href="sheets.html">Studysheets</a>
       <a href="credits.html">Credits</a>
     </header>
-	<div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
-	  <div id="user-info"></div>
-	  <button id="login_button">Login</button>
-	  <div id="debug"></div>
-	</div>
-	<h3>Share a study sheet</h3>
-	<form action="addsheet" method="POST">
-	  Title: <input type=text name="title" size=40> <br><br>
-	  Tags: <input type=text name="tags" size="100"> <br><br>
-	  If you are logged in, your name will be added under the title of the study sheet. <br><br>
-	  Data: 
-	  <br><textarea name="sheetData" rows=20 cols=150></textarea><br>
-	  <input type=hidden id="fbname" name="fbname"> <br><br>
-	<button type="submit">Publish</button>
-</form>
-	<h3> Find a study sheet </h3><br>
-	<font color="green">Click on Titles to show study sheets, and the hide buttons to hide</font>
-	{% for sheet in sheets %}
-		<p onclick='showStuff("{{sheet['ti']}}"); return false;' <b><font color=green">{{sheet["ti"]}}</font></b></p>
-		<p onclick='showStuff("{{sheet['ti']}}"); return false;' <b><font color=green">{{sheet["na"]}}</font></b></p>
-		<p onclick='hideStuff("{{sheet['ti']}}"); return false;'><font color=green" size="1"> Click to hide </font></p>
-		<span id="{{sheet['ti']}}" style="display: none;"> {{sheet["da"]}} </span><br>
-		<font size="1">Tags: {{sheet["ta"]}}</font><br><br><hr>
-	{% endfor %}
-  </body>
-  <script>
-	setTimeout("setHiddenName()",2500);;
-  </script>
+    <div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
+      <div id="user-info"></div>
+      <button id="login_button">Login</button>
+      <div id="debug"></div>
+    </div>
+    <h3>Share a study sheet</h3>
+    <form action="addsheet" method="POST">
+      Title: <input type=text name="title" size=40> <br><br>
+      Tags: <input type=text name="tags" size="100"> <br><br>
+      If you are logged in, your name will be added under the title of the study sheet. <br><br>
+      Data: 
+      <br><textarea name="sheetData" rows=20 cols=150></textarea><br>
+      <input type=hidden id="fbname" name="fbname"> <br><br>
+      <button type="submit">Publish</button>
+    </form>
+    <h3> Find a study sheet </h3><br>
+    <font color="green">Click on Titles to show study sheets, and the hide buttons to hide</font>
+    {% for sheet in sheets %}
+    <p onclick='showStuff("{{sheet['ti']}}"); return false;' <b><font color=green">{{sheet["ti"]}}</font></b></p>
+											       <p onclick='showStuff("{{sheet['ti']}}"); return false;' <b><font color=green">{{sheet["na"]}}</font></b></p>
+       <p onclick='hideStuff("{{sheet['ti']}}"); return false;'><font color=green" size="1"> Click to hide </font></p>
+											   <span id="{{sheet['ti']}}" style="display: none;"> {{sheet["da"]}} </span><br>
+											   <font size="1">Tags: {{sheet["ta"]}}</font><br><br><hr>
+											   {% endfor %}
+</body>
+<script>
+  setTimeout("setHiddenName()",2500);;
+</script>
 </html>
