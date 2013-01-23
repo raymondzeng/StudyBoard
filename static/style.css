@@ -34,17 +34,17 @@ table {
 }
 #user_name {
     position: absolute;
-    top: -10px;
+    top: 5px;
     right: 30px;
 }
 #user_photo {
     position: absolute;
-    top: 0px;
-     right: 120px;
+    top: 15px;
+    right: 120px;
 }
 #login_button {
     position: absolute;
-    top: 10px;
+    top: 25px;
 }
 header { 
     display: block; 
