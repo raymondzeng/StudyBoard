@@ -19,7 +19,7 @@ function hideStuff(id) {
 
 function init()
 {
-    var sw = $(window).width();
+    var sw = $(window).width()-630;
     var sp = 605;
     while(sw > 0){
 	$("#bannercenter").append("<img src='static/images/bannercenter.png' style='position:absolute;top:0px;left:" + sp.toString() + "px'/>");
