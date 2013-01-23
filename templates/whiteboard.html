@@ -18,6 +18,24 @@
       <a href="#chat" id="trigger"><font color="cyan">Show Live Chat</a>
     </header>
     <div id="panel">
+      Chatroom
+      <div><input id=input placeholder=Text /></div>
+      <div id="box"></div>
+      <div id=pubnub pub-key=demo sub-key=demo></div>
+      
+      <script src=http://cdn.pubnub.com/pubnub-3.1.min.js></script>
+      <script>(function(){
+	var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
+	PUBNUB.subscribe({
+	channel : channel,
+	callback : function(text) { box.innerHTML = ('fb_name:'+text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML; }
+	  });
+	  PUBNUB.bind( 'keyup', input, function(e) {
+	  (e.keyCode || e.charCode) === 13 && PUBNUB.publish({
+	  channel : channel, message : input.value, x : (input.value='')
+	  });
+	  } );
+	  })();</script>
     </div>
     <div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
       <div id="user-info">
@@ -27,43 +45,43 @@
       </div>
     </div>
     <div class="colorpalette" style="position:absolute;top:120px;left:994px;">
-      <canvas id="palette" width="210" height="250"></canvas>
+      <canvas id="palette" width="210" height="300"></canvas>
       <div class="ctrlpanel">
 	<div>
-	  <label>RGB</label><input type="text" id="RGB"/>
-	</div>
-	<div>
-	  <label>HEX</label><input type="text" id="HEX"/>
+	  <label>RGB</label><input type="text" id="RGB" size=8 />
+	  <label>HEX</label><input type="text" id="HEX" size=4 />
 	</div>
       </div>
     </div>
-    <div id="paletteselection">
-      <div style="top:1%;left:1200px;">
-	Choose Color
-      </div>
-      <div class="color" ; style="top:1%;left:1200px;width:30px;height:30px;background:green;border:2px solid white;" id="green" onclick="color(this)">
-      </div>
-      <div class="color" ; style="top:1%;left:1250px;width:30px;height:30px;background:blue;border:2px solid white;" id="blue" onclick="color(this)">
-      </div>
-      <div class="color" style="top:1%;left:1300px;width:30px;height:30px;background:red;border:2px solid white;" id="red" onclick="color(this)">
-      </div>
-      <div class="color" style="top:1%;left:1200px;width:30px;height:30px;background:yellow;border:2px solid white;" id="yellow" onclick="color(this)">
-      </div>
-      <div class="color" style="top:1%;left:1250px;width:30px;height:30px;background:orange;border:2px solid white;" id="orange" onclick="color(this)">
-      </div>
-      <div class="color" style="top:1%;left:1300px;width:30px;height:30px;background:black;border:2px solid white;" id="black" onclick="color(this)">
-      </div>
-      <div style="top:23%;left:1200px;">
-	Eraser
-      </div>
-      <div class="color" style="top:25%;left:1200px;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)">
-      </div>
-</div>
+    <!--
+	<div id="paletteselection">
+	  <div style="top:1%;left:1200px;">
+	    Choose Color
+	  </div>
+	  <div class="color" ; style="top:1%;left:1200px;width:30px;height:30px;background:green;border:2px solid white;" id="green" onclick="color(this)">
+	  </div>
+	  <div class="color" ; style="top:1%;left:1250px;width:30px;height:30px;background:blue;border:2px solid white;" id="blue" onclick="color(this)">
+	  </div>
+	  <div class="color" style="top:1%;left:1300px;width:30px;height:30px;background:red;border:2px solid white;" id="red" onclick="color(this)">
+	  </div>
+	  <div class="color" style="top:1%;left:1200px;width:30px;height:30px;background:yellow;border:2px solid white;" id="yellow" onclick="color(this)">
+	  </div>
+	  <div class="color" style="top:1%;left:1250px;width:30px;height:30px;background:orange;border:2px solid white;" id="orange" onclick="color(this)">
+	  </div>
+	  <div class="color" style="top:1%;left:1300px;width:30px;height:30px;background:black;border:2px solid white;" id="black" onclick="color(this)">
+	  </div>
+	  <div style="top:23%;left:1200px;">
+	    Eraser
+	</div>
+	  <div class="color" style="top:25%;left:1200px;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)">
+	  </div>
+	</div>
+	-->
     <input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:680px;left:25px;">
     <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:680px;left:80px;">
     <input type="button" value="load" id="ld" size="23" onclick="load()" style="position:absolute;top:680px;left:135px">
     <input type="button" value="start real time" id="ss" size="23" onclick="startSet(); startGet()" style="position:absolute;top:680px;left:180px">
-    
+
     <p style="position:absolute;top:700px;left:25px;">
       Credits to <a href="http://stackoverflow.com/questions/2368784/draw-by-mouse-with-html5-canvas">Stackoverflow</a> for the whiteboard code
     </p>

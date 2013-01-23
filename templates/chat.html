@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+  #box{
+border: 2px solid black
+}
+</style>
+</head>
 <body>
-  <div><input id=input placeholder=you-chat-here /></div>
+  <div><input id=input placeholder=Text /></div>
   Chat Output
+  
   <div id=box></div>
   <div id=pubnub pub-key=demo sub-key=demo></div>
   <script src=http://cdn.pubnub.com/pubnub-3.1.min.js></script>
