@@ -1,6 +1,6 @@
-//CANVAS STUFF
+var button;
+var userInfo;
 var saved_image = "";
-var setIntv, getIntv;
 var fb_name, fb_id;
 var canvas1,canvas2,ctx1,ctx2,flag=false,prevX=0,currX=0,prevY=0,currY=0,dot_flag=false;
 var x="black",y=2;
@@ -69,24 +69,6 @@ function selectcolor(e)
     }
 }
 
-/*
-function color(obj)
-{
-    switch(obj.id)
-    {
-    case "green" : x="green";break;
-    case "blue" : x="blue";break;
-    case "red" : x="red";break;
-    case "yellow" : x="yellow";break;
-    case "orange" : x="orange";break;
-    case "black" : x="black";break;
-    case "white" : x="white";break;
-    }
-    if(x=="white")y=20;
-    else y=2;
-}
-*/
-
 function draw()
 {
     ctx1.beginPath();
@@ -152,23 +134,6 @@ function findxy(res,e)
     }
 }
 
-//FB STUFF
-/*FB Login gives us access to 
-  fb id
-  name
-  first_name
-  last_name
-  link
-  username
-  gender
-  locale
-  Other public information
-  email
-  about user
-*/
-
-var button;
-var userInfo;
 window.fbAsyncInit = function() {
     FB.init({ appId: '415808421820964', 
 	      status: true, 
@@ -227,7 +192,6 @@ function login(response, info){
 	$('#fb-prelog').css('display','none');
 	$('#fb-postlog').css('display','inline-block');
 	button.innerHTML = 'Logout';
-	//document.getElementById('other').style.display = "block";
     }
 }
 
@@ -236,35 +200,7 @@ function logout(response){
     document.getElementById('debug').innerHTML = "";
     document.getElementById('other').style.display = "none";
 }
-/*
-$(function(){
-    var canvas = document.getElementById('picker');
-    var ctx = canvas.getContext('2d');
-    var image = new Image();
-    image.onload = function () {
-        ctx.drawImage(image, 0, 0, image.width, image.height);
-    }
-    image.src = 'static/studyboardpalette.png';
 
-    $('#picker').mousemove(function(e) { // mouse move handler
-        // get coordinates of current position
-        var canvasOffset = $(canvas).offset();
-        var canvasX = Math.floor(e.pageX - canvasOffset.left);
-        var canvasY = Math.floor(e.pageY - canvasOffset.top);
-	
-        // get current pixel
-        var imageData = ctx.getImageData(canvasX, canvasY, 1, 1);
-        var pixel = imageData.data;
-	
-        // update preview color
-        var pixelColor = "rgb("+pixel[0]+", "+pixel[1]+", "+pixel[2]+")";
-        $('.preview').css('backgroundColor', pixelColor);
-        $('#rgbVal').val(pixel[0]+','+pixel[1]+','+pixel[2]);
-        var dColor = pixel[2] + 256 * pixel[1] + 65536 * pixel[0];
-        $('#hexVal').val('#' + ('0000' + dColor.toString(16)).substr(-6));
-    });
-});
-*/
 $(document).ready(function(){
     $("#trigger").click(function(){
 	$("#panel").toggle("fast");
@@ -292,35 +228,6 @@ function hightlight(){
     }
 }
 
-function startSet(){
-    clearInterval(setIntv);
-    setIntv = setInterval(setImg,333);
-    clearInterval(getIntv);
-    $("#ss").attr("value","Stop Real Time");
-    $("#ss").attr("onclick","stopSet()");
-    getIntv = setInterval(getImg,333);
-}
-function stopSet(){
-    clearInterval(setIntv);
-    clearInterval(getIntv);
-    $('#ss').attr("value","Start Real Time");
-    $('#ss').attr("onclick","startSet()");
-}
-function setImg(){
-    var s = canvas1.toDataURL();
-    $.getJSON('/setImg',{s:s});
-}
-function getImg(){
-    $.getJSON('/getImg',function(data) {
-	 var img = new Image;
-	img.src = data.result;
-	ctx1.drawImage(img,0,0);
-    });
-}
-	    
-    
 $(document).ready(function(){
     $("#paletteselection").click(hightlight);
-    startSet();
-    startGet();
 });
