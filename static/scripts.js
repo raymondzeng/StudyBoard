@@ -219,7 +219,7 @@ function login(response, info){
 	$('#fb-prelog').css('display','none');
 	$('#fb-postlog').css('display','inline-block');
 	button.innerHTML = 'Logout';
-	document.getElementById('other').style.display = "block";
+	//document.getElementById('other').style.display = "block";
     }
 }
 
@@ -285,18 +285,18 @@ function hightlight(){
 }
 
 function startSet(){
-    stopSet();
-    setIntv = setInterval(setImg,100);
-}
-function startGet(){
-    stopGet();
-    getIntv = setInterval(getImg,100);
+    clearInterval(setIntv);
+    setIntv = setInterval(setImg,333);
+    clearInterval(getIntv);
+    $("#ss").attr("value","Stop Real Time");
+    $("#ss").attr("onclick","stopSet()");
+    getIntv = setInterval(getImg,333);
 }
 function stopSet(){
     clearInterval(setIntv);
-}
-function stopGet(){
     clearInterval(getIntv);
+    $('#ss').attr("value","Start Real Time");
+    $('#ss').attr("onclick","startSet()");
 }
 function setImg(){
     var s = canvas1.toDataURL();
