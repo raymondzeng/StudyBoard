@@ -49,9 +49,9 @@ function init()
 
 function selectcolor(e)
 {
-    var paletteX=e.clientX-994; //not sure why 'canvas2.offsetLeft/Top' wasn't working for me so I hard coded the offsets
-    var paletteY=e.clientY-120; 
-    if(paletteX > 171 && paletteX < 202 && paletteY > 251 && paletteY < 291){
+    var paletteX=e.clientX-994;
+    var paletteY=e.clientY-162; 
+    if(paletteX > 171 && paletteX < 202 && paletteY > 250 && paletteY < 290){
 	$('#RGB').val('Eraser');
 	$('#HEX').val('Eraser');
 	x='#ffffff';
