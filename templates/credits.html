@@ -1,44 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-<style type="text/css">
-canvas {
-	background-color:white;
-	box-shadow:4px 4px 8px cyan;
-}
-body {
-	background-color:black;
-	color:white;
-	padding-left:50px;
-	font-family:tahoma;
-}
-h1 {
-	font-size:30px;
-	color:cyan;
-}
-a {
-	color:white;
-}
-table {
-	border-color:white;
-	border-style:dashed;
-	border-width: 1px;
-}
-user_name {
-        position: absolute;
-        top: 0px;
-        right: 30px;
-}
-#user_photo {
-        position: absolute;
-        top: 0px;
-        right: 120px;
-}
-#login_button {
-        position: absolute;
-        top: 20px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="/static/style.css" media="all"/>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="static/scripts.js"></script>
 </head>
@@ -47,12 +10,12 @@ user_name {
 </div>
 <h1>StudyBoard</h1>
 <table width=100%>
-<tr>
-	<td width=25%><a href="home.html">Home</a></td>
-	<td width=25%><a href="whiteboard.html">Live Whiteboard</a></td>
-	<td width=25%><a href="sheets.html">Studysheets</a></td>
-	<td width=25%><a href="credits.html">Credits</a></td>
-</tr>
+    <header>
+      <a href="home.html">Home</a>
+      <a href="whiteboard.html">Live Whiteboard</a>
+      <a href="sheets.html">Studysheets</a>
+      <a href="credits.html">Credits</a>
+    </header>
 <table width="100%">
 </table>
 <div id="fb-postlog" style="position:absolute;right:100px;top:10px;">
