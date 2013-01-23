@@ -28,7 +28,10 @@ def addsheet():
     title = request.form["title"]
     tags = request.form["tags"]
     data = request.form["sheetData"]
-    utils.addsheet(title, tags, data)
+    name = str(request.form["fbname"])
+    if name == "undefined":
+        name = "Anonymous User (No Facebook Login)"
+    utils.addsheet(title, tags, data, name)
     return render_template("sheets.html", sheets=utils.returnsheets())
 
 @app.route("/credits.html", methods = ["GET", "POST"])

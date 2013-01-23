@@ -12,9 +12,9 @@ def setCanvasImg(str):
     wb['canvas_img'] = str
     return True
 
-def addsheet(title, tags, data):
+def addsheet(title, tags, data, name):
     sheets = shelve.open("sheets")
-    data = {"ti":title, "ta":tags, "da":data}
+    data = {"ti":title, "ta":tags, "da":data, "na":name}
     sheets[str(title)] = data
     sheets.close()
     return True
@@ -28,8 +28,3 @@ def returnsheets():
         a.append(sheets[key])
     sheets.close()
     return a
-
-
-#print(getCanvasImg())
-#setCanvasImg('hello')
-#print(getCanvasImg())
