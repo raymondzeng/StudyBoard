@@ -8,7 +8,7 @@ body {
     background-color:black;
     color:white;
     padding-left:20px;
-	padding-top:100px;
+	padding-top:150px;
     font-family:tahoma;
 }
 #paletteselection {
@@ -61,7 +61,7 @@ header {
     width: 100%; 
     height: 40px; 
     position: fixed; 
-	top:50px;
+	top:75px;
     z-index: 999;
 }
 header a:hover,
