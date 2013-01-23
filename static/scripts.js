@@ -26,8 +26,6 @@ function init()
 
     canvas2=document.getElementById('palette');
     ctx2=canvas2.getContext("2d");
-    w2=canvas2.width;
-    h2=canvas2.height;
     var image=new Image();
     image.src="static/images/studyboardpalette.png";
     image.onload = function () {
@@ -45,21 +43,25 @@ function selectcolor(e)
 {
     var paletteX=e.clientX-994; //not sure why 'canvas2.offsetLeft/Top' wasn't working for me so I hard coded the offsets
     var paletteY=e.clientY-120; 
-    var pixeldata=ctx2.getImageData(paletteX,paletteY,1,1);
-    var pixel=pixeldata.data;
-    $('#RGB').val(pixel[0]+','+pixel[1]+','+pixel[2]);
-    var temphex=pixel[2] + 256 * pixel[1] + 65536 * pixel[0];
-    var hex='#'+('000000' + temphex.toString(16)).substr(-6)
-    $('#HEX').val(hex);
-    /*if(hex=="#000000")
-    {
-	console.log("poo");
-	x="black";
+    if(paletteX > 171 && paletteX < 202 && paletteY > 251 && paletteY < 291){
+	$('#RGB').val('Eraser');
+	$('#HEX').val('Eraser');
+	x='#ffffff';
+	y=20;
     }
-    else*/
+    else{
+	var pixeldata=ctx2.getImageData(paletteX,paletteY,1,1);
+	var pixel=pixeldata.data;
+	$('#RGB').val(pixel[0]+','+pixel[1]+','+pixel[2]);
+	var temphex=pixel[2] + 256 * pixel[1] + 65536 * pixel[0];
+	var hex='#'+('000000' + temphex.toString(16)).substr(-6)
+	$('#HEX').val(hex);
 	x=hex;
+	y=2;
+    }
 }
 
+/*
 function color(obj)
 {
     switch(obj.id)
@@ -74,8 +76,8 @@ function color(obj)
     }
     if(x=="white")y=20;
     else y=2;
-    
 }
+*/
 
 function draw()
 {

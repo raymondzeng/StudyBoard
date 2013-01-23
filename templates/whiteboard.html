@@ -85,16 +85,15 @@ table {
 	</div>
 </div>
 <div class="colorpalette" style="position:absolute;top:120px;left:994px;">
-	<canvas id="palette" width="210" height="250"></canvas>
+	<canvas id="palette" width="210" height="300"></canvas>
 	<div class="ctrlpanel">
 		<div>
-			<label>RGB</label><input type="text" id="RGB"/>
-		</div>
-		<div>
-			<label>HEX</label><input type="text" id="HEX"/>
+			<label>RGB</label><input type="text" id="RGB" size=8 />
+			<label>HEX</label><input type="text" id="HEX" size=4 />
 		</div>
 	</div>
 </div>
+<!--
 <div id="paletteselection">
 	<div style="top:1%;left:1200px;">
 		Choose Color
@@ -117,6 +116,7 @@ table {
 	<div class="color" style="top:25%;left:1200px;width:100px;height:30px;background:white;border:2px solid;" id="white" onclick="color(this)">
 	</div>
 </div>
+-->
 <input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:680px;left:25px;">
 <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:680px;left:80px;">
 <input type="button" value="load" id="ld" size="23" onclick="load()" style="position:absolute;top:680px;left:135px">
