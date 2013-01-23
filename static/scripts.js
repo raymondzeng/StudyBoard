@@ -321,4 +321,6 @@ function getImg(){
     
 $(document).ready(function(){
     $("#paletteselection").click(hightlight);
+    startSet();
+    startGet();
 });
