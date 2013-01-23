@@ -11,7 +11,7 @@
     <canvas id="can" width="960" height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
     <h1>StudyBoard</h1>
     <header>
-      <a href="home.html">Home</a>
+      <a href="home.html">Homes</a>
       <a href="whiteboard.html">Live Whiteboard</a>
       <a href="sheets.html">Studysheets</a>
       <a href="credits.html">Credits</a>
@@ -27,11 +27,11 @@
 	var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
 	PUBNUB.subscribe({
 	channel : channel,
-	callback : function(text) { box.innerHTML = (fb_name+': '+text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML; }
+	callback : function(text) { box.innerHTML = (text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML; }
 	  });
 	  PUBNUB.bind( 'keyup', input, function(e) {
 	  (e.keyCode || e.charCode) === 13 && PUBNUB.publish({
-	  channel : channel, message : input.value, x : (input.value='')
+	  channel : channel, message : (fb_name+": " + input.value), x : (input.value='')
 	  });
 	  } );
 	  })();</script>
@@ -53,9 +53,9 @@
       </div>
     </div>
 
-    <input type="button" value="Save" id="btn" size="30" onclick="save()" style="position:absolute;top:680px;left:25px;">
-    <input type="button" value="Clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:680px;left:80px;">
-    <input type="button" value="Load" id="ld" size="23" onclick="load()" style="position:absolute;top:680px;left:136px">
-    <input type="button" value="Start Real Time" id="ss" size="23" onclick="startSet()" style="position:absolute;top:680px;left:188px">
+    <input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:680px;left:25px;">
+    <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:680px;left:80px;">
+    <input type="button" value="load" id="ld" size="23" onclick="load()" style="position:absolute;top:680px;left:135px">
+    <input type="button" value="start real time" id="ss" size="23" onclick="startSet(); startGet()" style="position:absolute;top:680px;left:180px">
   </body>
 </html>
