@@ -11,7 +11,7 @@
     <canvas id="can" width="960" height="540" style="position:absolute;top:120px;left:25px;border:2px solid;"></canvas>
     <h1>StudyBoard</h1>
     <header>
-      <a href="home.html">Homes</a>
+      <a href="home.html">Home</a>
       <a href="whiteboard.html">Live Whiteboard</a>
       <a href="sheets.html">Studysheets</a>
       <a href="credits.html">Credits</a>
@@ -30,6 +30,9 @@
 	callback : function(text) { box.innerHTML = (text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML; }
 	  });
 	  PUBNUB.bind( 'keyup', input, function(e) {
+	  if (String(fb_name) == "undefined"){
+		fb_name = "Anonymous"
+	  }
 	  (e.keyCode || e.charCode) === 13 && PUBNUB.publish({
 	  channel : channel, message : (fb_name+": " + input.value), x : (input.value='')
 	  });
